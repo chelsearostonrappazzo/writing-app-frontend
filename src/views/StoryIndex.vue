@@ -1,6 +1,6 @@
 <template>
   <div class="story">
-    <div v-for="story in stories" :key="story.id">{{story.name}}
+    <div v-for="story in stories" :key="story.id">{{ story.name }}</div>
   </div>
 </template>
 
@@ -8,18 +8,18 @@
 import axios from "axios";
 
 export default {
-  data: function() {
+  data: function () {
     return {
       stories: [],
-      
     };
   },
   methods: {
     indexStories: function () {
-      axios.get("/api/stories").then((response) => {console.log(response.data); 
-      this.stories = response.data;
+      axios.get("/stories").then((response) => {
+        console.log(response.data);
+        this.stories = response.data;
       });
-    }
-  }
-}
-<script>
+    },
+  },
+};
+</script>
