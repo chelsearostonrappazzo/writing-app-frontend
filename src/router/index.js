@@ -5,7 +5,7 @@ import Signup from "../views/SignUp.vue";
 import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
 import Dashboard from "../views/Dashboard.vue";
-import ChapterIndex from "../views/ChapterIndex.vue";
+
 
 Vue.use(VueRouter);
 
@@ -39,16 +39,11 @@ const routes = [
     component: Logout,
   },
   {
-    path: "/dashboard",
+    path: "/stories/:id",
     name: "Dashboard",
     component: Dashboard,
   },
-  {
-    path: "/stories/:id/chapters",
-    name: "chapters",
-    component: ChapterIndex,
-  },
-  
+
 ];
 
 const router = new VueRouter({

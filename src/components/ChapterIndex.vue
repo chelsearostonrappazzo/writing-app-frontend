@@ -1,6 +1,10 @@
 <template>
-  <div class="story">
-    <div v-for="chapter in chapters" :key="chapter.id">{{ chapter.title }}</div>
+  <div class="container chapter-index">
+    <div class="row">
+      <ul class="list-group col-md-3">
+        <li class="list-group-item" v-for="chapter in chapters" :key="chapter.id">{{ chapter.title }}</li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -25,3 +29,4 @@ export default {
     },
   },
 };
+</script>

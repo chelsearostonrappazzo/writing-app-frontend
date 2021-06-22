@@ -2,3 +2,21 @@
   margin: 10px;
   width: 24rem;
 }
+
+#toolbar-container .ql-font span[data-label="Georgia"]::before {
+  font-family: "Georgia";
+}
+#toolbar-container .ql-font span[data-label="Garamond"]::before {
+  font-family: "Garamond";
+}
+.ql-font-georgia {
+  font-family: "Georgia";
+}
+.ql-font-garamond {
+  font-family: "Garamond";
+}
+#scrolling-container {
+  height: 100%;
+  min-height: 100%;
+  overflow-y: auto;
+}
