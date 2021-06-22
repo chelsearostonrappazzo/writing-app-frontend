@@ -1,6 +1,6 @@
 <template>
   <div class="story">
-    <div v-for="story in stories" :key="story.id">{{ story.name }}</div>
+    <div v-for="story in stories" :key="story.id">{{ story.title }}</div>
   </div>
 </template>
 
@@ -12,6 +12,9 @@ export default {
     return {
       stories: [],
     };
+  },
+  mounted: function () {
+    this.indexStories();
   },
   methods: {
     indexStories: function () {

@@ -50,7 +50,7 @@ export default {
         password_confirmation: this.passwordConfirmation,
       };
       axios
-        .post("/api/users", params)
+        .post("/users", params)
         .then((response) => {
           console.log(response.data);
           this.$router.push("/login");
