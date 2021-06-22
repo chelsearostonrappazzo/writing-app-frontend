@@ -1,15 +1,15 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
+    <StoryIndex />
   </div>
 </template>
 
 <script>
-// export default {
-//   data: function() {
-//     return {
+import StoryIndex from "@/components/StoryIndex";
 
-//     }
-//   }
-// };
+export default {
+  components: {
+    StoryIndex,
+  },
+};
 </script>
