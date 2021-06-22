@@ -1,5 +1,5 @@
 <template>
-  <div class="container editor">
+  <div class="editor">
     <div id="standalone-container">
       <div id="toolbar-container">
         <span class="ql-formats">
@@ -50,10 +50,7 @@
     </div>
     <div id="scrolling-container">
       <div id="editor-container">
-        <p>
-          <br />
-          <ChapterShow />
-        </p>
+        <ChapterShow />
       </div>
     </div>
   </div>

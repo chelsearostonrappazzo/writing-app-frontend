@@ -1,6 +1,6 @@
 <template>
-  <div class="story">
-    <div>{{ chapter.body }}</div>
+  <div class="chapter">
+    <p>{{ chapter.body }}</p>
   </div>
 </template>
 
@@ -11,6 +11,7 @@ export default {
   data: function () {
     return {
       chapter: {},
+      selectedChapterId: 1,
     };
   },
   mounted: function () {
@@ -18,7 +19,7 @@ export default {
   },
   methods: {
     showChapter: function () {
-      axios.get("/chapters/" + this.$route.params.id).then((response) => {
+      axios.get("/chapters/" + this.selectedChapterId).then((response) => {
         console.log(response.data);
         this.chapter = response.data;
       });

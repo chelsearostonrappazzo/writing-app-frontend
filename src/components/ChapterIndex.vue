@@ -1,7 +1,7 @@
 <template>
-  <div class="container chapter-index">
+  <div class="chapter-index">
     <div class="row">
-      <ul class="list-group col-md-3">
+      <ul class="list-group">
         <li class="list-group-item" v-for="chapter in chapters" :key="chapter.id">{{ chapter.title }}</li>
       </ul>
     </div>
