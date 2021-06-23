@@ -31,7 +31,12 @@
         </div>
       </div>
       <div class="col-md-8">
-        <TipTapEditor v-model="displayChapter" />
+        <div v-if="!displayChapter">
+          <TipTapEditor />
+        </div>
+        <div v-else>
+          <TipTapEditor v-model="displayChapter" />
+        </div>
       </div>
     </div>
   </div>
