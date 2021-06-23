@@ -171,6 +171,7 @@ export default {
           spellcheck: "true",
         },
       },
+
       onUpdate: () => {
         this.wordCount = this.editor.state.doc.textContent.match(/\b(\w+)\b/g).length;
         // this.$emit("input", this.editor.getHTML());

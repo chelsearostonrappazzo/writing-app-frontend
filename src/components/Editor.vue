@@ -38,6 +38,9 @@
           <TipTapEditor v-model="displayChapter" />
         </div>
       </div>
+      <div class="col-md-4">
+        <WritersBlock />
+      </div>
     </div>
   </div>
 </template>
@@ -45,10 +48,12 @@
 <script>
 import axios from "axios";
 import TipTapEditor from "@/components/TipTapEditor";
+import WritersBlock from "@/components/WritersBlock";
 
 export default {
   components: {
     TipTapEditor,
+    WritersBlock,
   },
   data: function () {
     return {
