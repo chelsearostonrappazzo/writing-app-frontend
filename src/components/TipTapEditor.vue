@@ -123,9 +123,9 @@
     <button class="btn btn-primary btn-group-sm outline" @click="editor.chain().focus().redo().run()">
       <i class="ri-arrow-go-forward-line"></i>
     </button>
-    word count: {{ wordCount }}
 
     <editor-content :editor="editor" />
+    word count: {{ wordCount }}
   </div>
 </template>
 

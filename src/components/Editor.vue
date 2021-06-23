@@ -1,7 +1,7 @@
 <template>
   <div class="container editor">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="btn-group" role="group">
           <button type="button" class="btn btn-primary btn-group-sm outline" v-on:click="chapterModal()">
             <i class="ri-add-line"></i>
@@ -30,7 +30,7 @@
           </a>
         </div>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-6">
         <div v-if="!displayChapter">
           <TipTapEditor />
         </div>
@@ -38,7 +38,7 @@
           <TipTapEditor v-model="displayChapter" />
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <WritersBlock />
       </div>
     </div>

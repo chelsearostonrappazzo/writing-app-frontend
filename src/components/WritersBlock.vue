@@ -1,18 +1,37 @@
 <template>
   <div class="writers-block">
-    <h1>Feeling Lost, Traveler?</h1>
+    <h3>Feeling Lost, Traveler?</h3>
     <div class="card story">
       <div class="card-body">
         <h5 class="card-title">Tropes</h5>
-        <p class="card-text">
+        <p class="card-text" v-for="trope in trope" :key="trope.id">
           {{ trope.name }}
         </p>
+        <button class="btn btn-primary btn-group-sm outline" v-on:click="showTrope()">generate</button>
       </div>
+    </div>
+    <div class="card-story">
       <div class="card-body">
         <h5 class="card-title">Archetypes</h5>
-        <p class="card-text">
-          {{ archetype }}
+        <p class="card-text" v-for="archetype in archetypes" :key="archetype.id">
+          {{ archetype.name }}
         </p>
+        <input type="text" v-model="archetypeNumber" placeholder="how many?" />
+        <button class="btn btn-primary btn-group-sm outline" v-on:click="showArchetype(archetypeNumber)">
+          generate
+        </button>
+        <button class="btn btn-primary btn-group-sm outline" v-on:click="clearArchetypes()">clear</button>
+      </div>
+    </div>
+    <div class="card-story">
+      <div class="card-body">
+        <h5 class="card-title">Settings</h5>
+        <p class="card-text" v-for="setting in settings" :key="setting.id">
+          {{ setting.name }}
+        </p>
+        <input type="text" v-model="settingNumber" placeholder="how many?" />
+        <button class="btn btn-primary btn-group-sm outline" v-on:click="showSetting(settingNumber)">generate</button>
+        <button class="btn btn-primary btn-group-sm outline" v-on:click="clearSettings()">clear</button>
       </div>
     </div>
   </div>
@@ -24,33 +43,39 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      trope: {},
-      archetype: {},
-      setting: {},
+      trope: [],
+      archetypes: [],
+      settings: [],
+      archetypeNumber: "",
     };
   },
-  mounted: function () {
-    this.showTrope();
-    this.showArchetype();
-  },
+  mounted: function () {},
   methods: {
     showTrope: function () {
-      axios.get("/tropes").then((response) => {
+      axios.get("/trope").then((response) => {
         console.log(response.data);
         this.trope = response.data;
       });
     },
-    showSetting: function () {
-      axios.get("/settings").then((response) => {
+    showSetting: function (settingNumber) {
+      axios.get(`/setting?number=${settingNumber}`).then((response) => {
         console.log(response.data);
-        this.setting = response.data;
+        this.settings = response.data;
       });
     },
-    showArchetype: function () {
-      axios.get("/archetypes").then((response) => {
+    showArchetype: function (archetypeNumber) {
+      axios.get(`/archetype?number=${archetypeNumber}`).then((response) => {
         console.log(response.data);
-        this.archetype = response.data;
+        this.archetypes = response.data;
       });
+    },
+    clearArchetypes: function () {
+      this.archetypeNumber = "";
+      this.archetypes = [];
+    },
+    clearSettings: function () {
+      this.settingNumber = "";
+      this.settings = [];
     },
   },
 };
