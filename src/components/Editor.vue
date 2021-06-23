@@ -25,47 +25,40 @@
       </div>
       <div class="col-md-8">
         {{ this.displayChapter.body }}
-        <div id="scrolling-container">
-          <div id="quill-container">
-            <div id="editor-container">
-              <p></p>
-            </div>
-          </div>
-        </div>
+        <editor-content :editor="editor" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-/* global Quill */
 import axios from "axios";
+import { Editor, EditorContent } from "@tiptap/vue-2";
+import StarterKit from "@tiptap/starter-kit";
 
 export default {
+  components: {
+    EditorContent,
+  },
   data: function () {
     return {
       selectedChapterId: "",
       chapters: [],
       displayChapter: "",
-      quill: null,
+      editor: null,
       title: "",
     };
   },
   mounted: function () {
-    this.setUpEditor();
     this.indexChapter();
+    this.setupTipTap();
   },
   methods: {
-    setUpEditor: function () {
-      var quill = new Quill("#quill-container", {
-        modules: {
-          toolbar: [[{ header: [1, 2, false] }], ["bold", "italic", "underline"], ["image", "code-block"]],
-        },
-        scrollingContainer: "#scrolling-container",
-        theme: "snow",
+    setUpTipTap: function () {
+      this.editor = new Editor({
+        content: "<p>{{this.displayChapter}}</p>",
+        extensions: [StarterKit],
       });
-
-      console.log(quill);
     },
     indexChapter: function () {
       axios.get("/stories/" + this.$route.params.id + "/chapters").then((response) => {
