@@ -3,14 +3,13 @@
   width: 24rem;
 }
 
-/* Tell Quill not to scroll */
-#quill-container {
+.ProseMirror {
   height: 750px;
   min-height: 100%;
   padding: 50px;
   border: 1px pink solid;
 }
-#quill-container .ql-editor {
+#tiptap-editor {
   font-size: 18px;
   overflow-y: visible;
   margin: 0.5cm auto;
@@ -50,4 +49,9 @@
 
 a.list-group-item:hover {
   color: pink;
+}
+
+a.list-group-item:active {
+  background-color: pink;
+  color: white;
 }

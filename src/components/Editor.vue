@@ -4,10 +4,17 @@
       <div class="col-md-4">
         <div class="btn-group" role="group">
           <button type="button" class="btn btn-primary btn-group-sm outline" v-on:click="chapterModal()">
-            +Chapter
+            <i class="ri-add-line"></i>
+            Chapter
           </button>
-          <button type="button" class="btn btn-primary btn-group-sm outline">+Character</button>
-          <button type="button" class="btn btn-primary btn-group-sm outline">+ Party Member</button>
+          <button type="button" class="btn btn-primary btn-group-sm outline">
+            <i class="ri-user-add-line"></i>
+            Character
+          </button>
+          <button type="button" class="btn btn-primary btn-group-sm outline">
+            <i class="ri-user-add-line"></i>
+            Party Member
+          </button>
         </div>
         <dialog id="add-chapter-modal">
           <form method="dialog">
@@ -24,8 +31,7 @@
         </div>
       </div>
       <div class="col-md-8">
-        {{ this.displayChapter.body }}
-        <editor-content :editor="editor" />
+        <TipTapEditor v-model="displayChapter" />
       </div>
     </div>
   </div>
@@ -33,33 +39,24 @@
 
 <script>
 import axios from "axios";
-import { Editor, EditorContent } from "@tiptap/vue-2";
-import StarterKit from "@tiptap/starter-kit";
+import TipTapEditor from "@/components/TipTapEditor";
 
 export default {
   components: {
-    EditorContent,
+    TipTapEditor,
   },
   data: function () {
     return {
       selectedChapterId: "",
       chapters: [],
       displayChapter: "",
-      editor: null,
       title: "",
     };
   },
   mounted: function () {
     this.indexChapter();
-    this.setupTipTap();
   },
   methods: {
-    setUpTipTap: function () {
-      this.editor = new Editor({
-        content: "<p>{{this.displayChapter}}</p>",
-        extensions: [StarterKit],
-      });
-    },
     indexChapter: function () {
       axios.get("/stories/" + this.$route.params.id + "/chapters").then((response) => {
         console.log(response.data);
@@ -71,7 +68,7 @@ export default {
       axios.get("/chapters/" + this.selectedChapterId).then((response) => {
         console.log(response.data);
         this.chapter = response.data;
-        this.displayChapter = this.chapter;
+        this.displayChapter = this.chapter.body;
       });
     },
     chapterModal: function () {
