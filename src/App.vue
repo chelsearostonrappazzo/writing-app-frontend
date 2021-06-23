@@ -1,13 +1,9 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link>
-      |
-      <router-link to="/about">About</router-link>
-      |
-
-      <router-link to="/dashboard">Dashboard</router-link>
-    </div>
+    <ul class="nav">
+      <li class="nav-item"><router-link class="nav-link" to="/">Home</router-link></li>
+      <li class="nav-item"><router-link class="nav-link" to="/dashboard">Dashboard</router-link></li>
+    </ul>
     <router-view />
   </div>
 </template>

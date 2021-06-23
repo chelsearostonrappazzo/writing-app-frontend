@@ -8,12 +8,13 @@
   height: 750px;
   min-height: 100%;
   padding: 50px;
+  border: 1px pink solid;
 }
 #quill-container .ql-editor {
   font-size: 18px;
   overflow-y: visible;
   margin: 0.5cm auto;
-  border: 0px pink solid;
+  border: 0px grey solid;
   border-radius: 0px;
   background: white;
   box-shadow: 0 0 5px rgb(0 0 0 /10%);
@@ -29,5 +30,24 @@
   overflow-y: auto;
 } */
 
-.page-editor {
+.btn-primary.outline {
+  border: 1px pink solid;
+  background: none;
+  color: pink;
+}
+
+.btn-primary.outline:hover,
+.btn-primary.outline:focus,
+.btn-primary.outline:active {
+  background-color: pink;
+  color: white;
+  border: 1px white solid;
+}
+
+.list-group .list-group-item {
+  border: 1px pink solid;
+}
+
+a.list-group-item:hover {
+  color: pink;
 }
