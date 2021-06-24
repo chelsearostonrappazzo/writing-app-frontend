@@ -138,17 +138,11 @@ export default {
   components: {
     EditorContent,
   },
-  props: {
-    value: {
-      type: String,
-      default: "",
-    },
-  },
+  props: ["value"],
   data() {
     return {
       editor: null,
       wordCount: 0,
-      json: null,
     };
   },
   watch: {
@@ -160,9 +154,10 @@ export default {
         return;
       }
 
-      this.editor.commands.setContent(this.value, false);
+      this.editor.commands.setContent(this.value);
     },
   },
+
   mounted() {
     this.editor = new Editor({
       extensions: [StarterKit, FontFamily],
