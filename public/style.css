@@ -47,11 +47,6 @@ a.list-group-item:active {
   color: white;
 }
 
-.vue-quick-edit__link--is-clickable {
-  color: pink !important;
-  border-bottom: 1px dashed pink !important;
-}
-
 .lg-edit {
   float: right;
 }

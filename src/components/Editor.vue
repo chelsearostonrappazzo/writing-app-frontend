@@ -31,14 +31,14 @@
         </div>
       </div>
       <div class="col-md-6">
-        <div v-if="!chapter.body">
-          <TipTapEditor />
-          <button v-on:click="updateChapter(chapter)">save</button>
-        </div>
-        <div v-else>
-          <TipTapEditor v-model="chapter.body" />
-          <button v-on:submit.prevent="updateChapter(chapter)">save</button>
-        </div>
+        <!-- <div v-if="!this.displayChapter"> -->
+        <TipTapEditor v-bind:displayChapter="value" v-model="displayChapter" />
+        <button v-on:click="updateChapter(chapter, displayChapter)">save</button>
+        <!-- </div> -->
+        <!-- <div v-else>
+          <TipTapEditor v-bind:displayChapter="value" />
+          <button v-on:submit.prevent="updateChapter(displayChapter)">save</button>
+        </div> -->
       </div>
       <div class="col-md-3">
         <WritersBlock />
@@ -61,7 +61,7 @@ export default {
     return {
       selectedChapterId: "",
       chapters: [],
-      displayChapter: "",
+      displayChapter: {},
       title: "",
       chapter: {},
     };
@@ -78,7 +78,7 @@ export default {
     },
     selectChapter: function (chapter) {
       this.selectedChapterId = chapter.id;
-      axios.get("/chapters/" + chapter.id).then((response) => {
+      axios.get("/chapters/" + this.selectedChapterId).then((response) => {
         console.log(response.data);
         this.chapter = response.data;
         this.displayChapter = this.chapter.body;
@@ -97,11 +97,10 @@ export default {
         this.chapters.push(response.data);
       });
     },
-    updateChapter: function (chapter) {
+    updateChapter: function (chapter, displayChapter) {
       let params = {
         title: chapter.title,
-        body: chapter.body,
-        id: chapter.id,
+        body: displayChapter,
       };
       axios.patch("/chapters/" + chapter.id, params).then((response) => {
         console.log(response.data);
