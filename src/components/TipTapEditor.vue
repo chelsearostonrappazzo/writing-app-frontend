@@ -133,7 +133,7 @@
 import { Editor, EditorContent } from "@tiptap/vue-2";
 import StarterKit from "@tiptap/starter-kit";
 import FontFamily from "@tiptap/extension-font-family";
-
+import axios from "axios";
 export default {
   components: {
     EditorContent,
@@ -148,6 +148,7 @@ export default {
     return {
       editor: null,
       wordCount: 0,
+      json: null,
     };
   },
   watch: {
@@ -171,15 +172,26 @@ export default {
           spellcheck: "true",
         },
       },
-
       onUpdate: () => {
         this.wordCount = this.editor.state.doc.textContent.match(/\b(\w+)\b/g).length;
         // this.$emit("input", this.editor.getHTML());
         // JSON
+
         this.$emit("input", this.editor.getJSON());
         console.log(this.wordCount);
       },
     });
+  },
+  methods: {
+    updateChapter: function (chapter) {
+      let params = {
+        title: chapter.title,
+        body: this.displayChapter,
+      };
+      axios.patch("/chapters/" + chapter.id, params).then((response) => {
+        console.log(response.data);
+      });
+    },
   },
 
   beforeDestroy() {
