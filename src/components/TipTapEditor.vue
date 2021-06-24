@@ -133,51 +133,42 @@
 import { Editor, EditorContent } from "@tiptap/vue-2";
 import StarterKit from "@tiptap/starter-kit";
 import FontFamily from "@tiptap/extension-font-family";
-
 export default {
   components: {
     EditorContent,
   },
+  props: ["modelValue"],
   data() {
     return {
       editor: null,
       wordCount: 0,
-      value: "",
     };
   },
-  // watch: {
-  //   value(value) {
-  //     // const isSame = this.editor.getHTML() === value;
-  //     // JSON
-  //     const isSame = this.editor.getJSON() === value;
-  //     if (isSame) {
-  //       return;
-  //     }
 
-  //     this.editor.commands.setContent(value, false);
-  //   },
-  // },
+  watch: {
+    modelValue(value) {
+      const isSame = this.editor.getJSON() === value;
+
+      if (isSame) {
+        return;
+      }
+
+      this.editor.commands.setContent(this.modelValue, false);
+    },
+  },
 
   mounted() {
     this.editor = new Editor({
+      content: this.modelValue,
       extensions: [StarterKit, FontFamily],
-      content: this.value,
-      editorProps: {
-        attributes: {
-          spellcheck: "true",
-        },
-      },
-
       onUpdate: () => {
         this.wordCount = this.editor.state.doc.textContent.match(/\b(\w+)\b/g).length;
-        this.editor.commands.setContent(this.value, false);
-        this.$emit("input", this.editor.getJSON());
-        console.log(this.wordCount);
+        this.$emit("update:modelValue", this.editor.getJSON());
       },
     });
   },
 
-  beforeDestroy() {
+  beforeUnmount() {
     this.editor.destroy();
   },
 };

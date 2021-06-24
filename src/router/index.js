@@ -4,8 +4,8 @@ import Home from "../views/Home.vue";
 import Signup from "../views/SignUp.vue";
 import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
-import Dashboard from "../views/Dashboard.vue";
-
+import StoryIndex from "../views/StoryIndex.vue";
+import Editor from "../views/Editor.vue";
 
 Vue.use(VueRouter);
 
@@ -39,9 +39,14 @@ const routes = [
     component: Logout,
   },
   {
+    path: "/stories/",
+    name: "StoryIndex",
+    component: StoryIndex,
+  },
+  {
     path: "/stories/:id",
-    name: "Dashboard",
-    component: Dashboard,
+    name: "Editor",
+    component: Editor,
   },
 
 ];

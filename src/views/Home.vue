@@ -1,15 +1,7 @@
 <template>
-  <div class="home">
-    <StoryIndex />
-  </div>
+  <div class="home">Welcome</div>
 </template>
 
 <script>
-import StoryIndex from "@/components/StoryIndex";
-
-export default {
-  components: {
-    StoryIndex,
-  },
-};
+export default {};
 </script>

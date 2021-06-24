@@ -27,10 +27,9 @@
 import axios from "axios";
 
 export default {
+  props: ["title"],
   data: function () {
-    return {
-      title: "",
-    };
+    return {};
   },
   methods: {
     chapterModal: function () {

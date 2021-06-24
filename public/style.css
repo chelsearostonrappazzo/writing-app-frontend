@@ -42,8 +42,9 @@ a.list-group-item:hover {
   color: pink;
 }
 
-a.list-group-item:active {
+a.list-group-item.active {
   background-color: pink;
+  border: pink;
   color: white;
 }
 
