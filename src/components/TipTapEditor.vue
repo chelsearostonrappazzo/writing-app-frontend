@@ -154,7 +154,7 @@ export default {
         return;
       }
 
-      this.editor.commands.setContent(this.value);
+      this.editor.commands.setContent(value, true);
     },
   },
 

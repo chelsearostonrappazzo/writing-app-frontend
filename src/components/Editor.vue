@@ -31,13 +31,13 @@
         </div>
       </div>
       <div class="col-md-6">
-        <!-- <div v-if="!this.displayChapter"> -->
+        <!-- <div v-if="this.displayChapter"> -->
         <TipTapEditor v-bind:displayChapter="value" v-model="displayChapter" />
         <button v-on:click="updateChapter(chapter, displayChapter)">save</button>
         <!-- </div> -->
         <!-- <div v-else>
-          <TipTapEditor v-bind:displayChapter="value" />
-          <button v-on:submit.prevent="updateChapter(displayChapter)">save</button>
+          <TipTapEditor />
+          <button v-on:submit.prevent="updateChapter(chapter, displayChapter)">save</button>
         </div> -->
       </div>
       <div class="col-md-3">
