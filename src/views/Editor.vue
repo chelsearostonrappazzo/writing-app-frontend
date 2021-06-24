@@ -12,8 +12,10 @@
         />
       </div>
       <div class="col-md-6">
-        <TipTapEditor v-bind:displayBody="modelValue" v-model="displayBody" />
-        <button v-on:click="updateChapter(chapter, displayBody)">save</button>
+        <div v-if="displayBody">
+          <TipTapEditor v-bind:displayBody="modelValue" v-model="displayBody" />
+          <button v-on:click="updateChapter(chapter, displayBody)">save</button>
+        </div>
       </div>
       <div class="col-md-3">
         <WritersBlock />
@@ -43,6 +45,8 @@ export default {
       selectedChapterId: 1,
       modelValue: "",
       chapters: [],
+      title: "",
+      chapter: {},
     };
   },
   mounted: function () {
@@ -60,7 +64,7 @@ export default {
         title: chapter.title,
         body: displayBody,
       };
-      axios.patch("/chapters/" + chapter.id, params).then((response) => {
+      axios.patch("/chapters/" + this.selectedChapterId, params).then((response) => {
         console.log(response.data);
       });
     },
