@@ -138,25 +138,25 @@ export default {
   components: {
     EditorContent,
   },
-  props: ["value"],
   data() {
     return {
       editor: null,
       wordCount: 0,
+      value: "",
     };
   },
-  watch: {
-    value(value) {
-      // const isSame = this.editor.getHTML() === value;
-      // JSON
-      const isSame = this.editor.getJSON().toString() === value.toString();
-      if (isSame) {
-        return;
-      }
+  // watch: {
+  //   value(value) {
+  //     // const isSame = this.editor.getHTML() === value;
+  //     // JSON
+  //     const isSame = this.editor.getJSON() === value;
+  //     if (isSame) {
+  //       return;
+  //     }
 
-      this.editor.commands.setContent(value, true);
-    },
-  },
+  //     this.editor.commands.setContent(value, false);
+  //   },
+  // },
 
   mounted() {
     this.editor = new Editor({
@@ -170,9 +170,7 @@ export default {
 
       onUpdate: () => {
         this.wordCount = this.editor.state.doc.textContent.match(/\b(\w+)\b/g).length;
-        // this.$emit("input", this.editor.getHTML());
-        // JSON
-
+        this.editor.commands.setContent(this.value, false);
         this.$emit("input", this.editor.getJSON());
         console.log(this.wordCount);
       },
