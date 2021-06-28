@@ -12,10 +12,13 @@
         />
       </div>
       <div class="col-md-6">
-        <div v-if="displayBody">
-          <TipTapEditor v-bind:displayBody="modelValue" v-model="displayBody" />
-          <button v-on:click="updateChapter(chapter, displayBody)">save</button>
+        <div v-if="displayChapter">
+          <TipTapEditor v-bind:displayChapter="displayChapter" v-model="displayChapter" />
         </div>
+        <div v-else>
+          <TipTapEditor v-model="displayChapter" />
+        </div>
+        <button v-on:click="updateChapter(chapter)">save</button>
       </div>
       <div class="col-md-3">
         <WritersBlock />
@@ -39,19 +42,20 @@ export default {
     ChapterSelector,
   },
 
-  data: function () {
+  data() {
     return {
-      displayBody: {},
-      selectedChapterId: 1,
-      modelValue: "",
+      selectedChapterId: "",
+      displayChapter: "",
       chapters: [],
       title: "",
       chapter: {},
     };
   },
-  mounted: function () {
+
+  mounted() {
     this.indexChapter();
   },
+
   methods: {
     indexChapter: function () {
       axios.get("/stories/" + this.$route.params.id + "/chapters").then((response) => {
@@ -59,22 +63,22 @@ export default {
         this.chapters = response.data;
       });
     },
-    updateChapter: function (chapter, displayBody) {
-      let params = {
-        title: chapter.title,
-        body: displayBody,
-      };
-      axios.patch("/chapters/" + this.selectedChapterId, params).then((response) => {
-        console.log(response.data);
-      });
-    },
     selectChapter: function (chapter) {
       this.selectedChapterId = chapter.id;
       axios.get("/chapters/" + this.selectedChapterId).then((response) => {
         console.log(response.data);
         chapter = response.data;
-        this.displayBody = chapter.body;
-        console.log(this.displayBody);
+        this.displayChapter = chapter.body;
+        console.log(this.displayChapter);
+      });
+    },
+    updateChapter: function (chapter) {
+      let params = {
+        title: chapter.title,
+        body: this.displayChapter,
+      };
+      axios.patch("/chapters/" + this.selectedChapterId, params).then((response) => {
+        console.log(response.data);
       });
     },
   },

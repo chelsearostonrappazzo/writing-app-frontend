@@ -137,7 +137,7 @@ export default {
   components: {
     EditorContent,
   },
-  props: ["modelValue"],
+  props: ["displayChapter"],
   data() {
     return {
       editor: null,
@@ -146,24 +146,24 @@ export default {
   },
 
   watch: {
-    modelValue(value) {
+    displayChapter(value) {
       const isSame = this.editor.getJSON() === value;
 
       if (isSame) {
         return;
       }
 
-      this.editor.commands.setContent(this.modelValue, false);
+      this.editor.commands.setContent(this.displayChapter, false);
     },
   },
 
   mounted() {
     this.editor = new Editor({
-      content: this.modelValue,
+      content: this.displayChapter,
       extensions: [StarterKit, FontFamily],
       onUpdate: () => {
         this.wordCount = this.editor.state.doc.textContent.match(/\b(\w+)\b/g).length;
-        this.$emit("update:modelValue", this.editor.getJSON());
+        this.$emit("input", this.editor.getJSON());
       },
     });
   },
