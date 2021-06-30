@@ -4,7 +4,7 @@
       <i class="ri-add-line"></i>
       Chapter
     </button>
-    <button type="button" class="btn btn-primary btn-group-sm outline">
+    <button type="button" class="btn btn-primary btn-group-sm outline" v-on:click="characterModal()">
       <i class="ri-user-add-line"></i>
       Character
     </button>
@@ -20,6 +20,26 @@
         <button class="btn btn-primary outline">Close</button>
       </form>
     </dialog>
+    <dialog id="add-character-modal">
+      <form method="dialog">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <label>Title</label>
+            <input type="text" v-model="name" />
+          </li>
+          <li class="list-group-item">
+            <label>Age</label>
+            <input type="text" v-model="age" />
+          </li>
+          <li class="list-group-item">
+            <label>Description</label>
+            <input type="text" v-model="description" />
+          </li>
+        </ul>
+        <button v-on:click="newCharacter()" class="btn btn-primary outline">Add</button>
+        <button class="btn btn-primary outline">Close</button>
+      </form>
+    </dialog>
   </div>
 </template>
 
@@ -29,7 +49,11 @@ import axios from "axios";
 export default {
   props: ["title"],
   data: function () {
-    return {};
+    return {
+      name: "",
+      age: "",
+      description: "",
+    };
   },
   methods: {
     chapterModal: function () {
@@ -43,6 +67,21 @@ export default {
       axios.post("/stories/" + this.$route.params.id + "/chapters", params).then((response) => {
         console.log(response.data);
         this.chapters.push(response.data);
+      });
+    },
+    characterModal: function () {
+      document.querySelector("#add-character-modal").showModal();
+    },
+    newCharacter: function () {
+      let params = {
+        name: this.name,
+        age: this.age,
+        description: this.description,
+        story_id: this.$route.params.id,
+      };
+      axios.post("/stories/" + this.$route.params.id + "/characters", params).then((response) => {
+        console.log(response.data);
+        this.characters.push(response.data);
       });
     },
   },

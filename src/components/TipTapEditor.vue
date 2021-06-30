@@ -154,6 +154,7 @@ export default {
       }
 
       this.editor.commands.setContent(this.displayChapter, false);
+      this.wordCount = this.editor.state.doc.textContent.match(/\b(\w+)\b/g).length;
     },
   },
 

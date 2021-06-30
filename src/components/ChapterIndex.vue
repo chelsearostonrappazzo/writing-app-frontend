@@ -1,14 +1,6 @@
 <template>
   <div class="chapter-index">
     <div class="row">
-      <!-- <ChapterSelector
-        <!-- class="list-group-item"
-        v-for="chapter in chapters"
-        v-bind:chapter="chapter"
-        v-bind:selectedChapterId="selectedChapterId"
-        v-on:selectChapter="selectChapter"
-        :key="chapter.id"
-      /> -->
       <div class="list-group">
         <a class="list-group-item" v-for="chapter in chapters" :key="chapter.id" v-on:click="selectChapter(chapter)">
           {{ chapter.title }}
@@ -20,13 +12,8 @@
 
 <script>
 import axios from "axios";
-// import ChapterSelector from "@/components/ChapterSelector";
 
 export default {
-  // props: ["chapter", "selectedChapterId"],
-  // components: {
-  //   ChapterSelector,
-  // },
   data: function () {
     return {
       chapters: [],

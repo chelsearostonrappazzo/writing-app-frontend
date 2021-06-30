@@ -10,6 +10,7 @@
           v-bind:selectedChapterId="selectedChapterId"
           v-on:selectChapter="selectChapter"
         />
+        <CharacterIndex />
       </div>
       <div class="col-md-6">
         <div v-if="displayChapter">
@@ -33,6 +34,7 @@ import TipTapEditor from "@/components/TipTapEditor";
 import WritersBlock from "@/components/WritersBlock";
 import NewElements from "@/components/NewElements";
 import ChapterSelector from "@/components/ChapterSelector";
+import CharacterIndex from "@/components/CharacterIndex";
 
 export default {
   components: {
@@ -40,6 +42,7 @@ export default {
     WritersBlock,
     NewElements,
     ChapterSelector,
+    CharacterIndex,
   },
 
   data() {
