@@ -10,14 +10,8 @@
           v-bind:selectedChapterId="selectedChapterId"
           v-on:selectChapter="selectChapter"
         />
-
-        <CharacterSelector
-          v-bind:character="character"
-          v-for="character in characters"
-          :key="character.id"
-          v-bind:selectedCharacterId="selectedCharacterId"
-          v-on:selectCharacter="selectCharacter"
-        />
+        <h2>Characters</h2>
+        <CharacterSelector v-bind:character="character" v-for="(character, index) in characters" :key="index + 10" />
       </div>
       <div class="col-md-6">
         <div v-if="displayChapter">
@@ -41,7 +35,6 @@ import TipTapEditor from "@/components/TipTapEditor";
 import WritersBlock from "@/components/WritersBlock";
 import NewElements from "@/components/NewElements";
 import ChapterSelector from "@/components/ChapterSelector";
-
 import CharacterSelector from "@/components/CharacterSelector";
 
 export default {
@@ -60,7 +53,6 @@ export default {
       chapters: [],
       title: "",
       chapter: {},
-      selectedCharacterId: "",
       character: {},
       characters: [],
     };
@@ -91,15 +83,6 @@ export default {
         chapter = response.data;
         this.displayChapter = chapter.body;
         console.log(this.displayChapter);
-      });
-    },
-    selectCharacter: function (character) {
-      this.selectedCharacterId = character.id;
-      axios.get("/characters/" + this.selectedCharacterId).then((response) => {
-        console.log(response.data);
-        character = response.data;
-        this.displayCharacter = character.body;
-        console.log(this.displayCharacter);
       });
     },
     updateChapter: function (chapter) {
