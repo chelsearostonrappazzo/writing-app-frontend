@@ -10,7 +10,14 @@
           v-bind:selectedChapterId="selectedChapterId"
           v-on:selectChapter="selectChapter"
         />
-        <CharacterIndex />
+
+        <CharacterSelector
+          v-bind:character="character"
+          v-for="character in characters"
+          :key="character.id"
+          v-bind:selectedCharacterId="selectedCharacterId"
+          v-on:selectCharacter="selectCharacter"
+        />
       </div>
       <div class="col-md-6">
         <div v-if="displayChapter">
@@ -34,7 +41,8 @@ import TipTapEditor from "@/components/TipTapEditor";
 import WritersBlock from "@/components/WritersBlock";
 import NewElements from "@/components/NewElements";
 import ChapterSelector from "@/components/ChapterSelector";
-import CharacterIndex from "@/components/CharacterIndex";
+
+import CharacterSelector from "@/components/CharacterSelector";
 
 export default {
   components: {
@@ -42,7 +50,7 @@ export default {
     WritersBlock,
     NewElements,
     ChapterSelector,
-    CharacterIndex,
+    CharacterSelector,
   },
 
   data() {
@@ -52,11 +60,15 @@ export default {
       chapters: [],
       title: "",
       chapter: {},
+      selectedCharacterId: "",
+      character: {},
+      characters: [],
     };
   },
 
   mounted() {
     this.indexChapter();
+    this.indexCharacter();
   },
 
   methods: {
@@ -66,6 +78,12 @@ export default {
         this.chapters = response.data;
       });
     },
+    indexCharacter: function () {
+      axios.get("/stories/" + this.$route.params.id + "/characters").then((response) => {
+        console.log(response.data);
+        this.characters = response.data;
+      });
+    },
     selectChapter: function (chapter) {
       this.selectedChapterId = chapter.id;
       axios.get("/chapters/" + this.selectedChapterId).then((response) => {
@@ -73,6 +91,15 @@ export default {
         chapter = response.data;
         this.displayChapter = chapter.body;
         console.log(this.displayChapter);
+      });
+    },
+    selectCharacter: function (character) {
+      this.selectedCharacterId = character.id;
+      axios.get("/characters/" + this.selectedCharacterId).then((response) => {
+        console.log(response.data);
+        character = response.data;
+        this.displayCharacter = character.body;
+        console.log(this.displayCharacter);
       });
     },
     updateChapter: function (chapter) {
