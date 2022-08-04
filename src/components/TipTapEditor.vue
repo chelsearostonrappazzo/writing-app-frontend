@@ -1,129 +1,129 @@
 <template>
   <div class="tiptap-editor">
     <div class="editor-toolbar">
-    <button
-      class="btn btn-primary btn-group-sm outline toolbar"
-      @click="editor.chain().focus().toggleBold().run()"
-      :class="{ 'is-active': editor.isActive('bold') }"
-    >
-      <i class="ri-bold"></i>
-    </button>
-    <button
-      class="btn btn-primary btn-group-sm outline toolbar"
-      @click="editor.chain().focus().toggleItalic().run()"
-      :class="{ 'is-active': editor.isActive('italic') }"
-    >
-      <i class="ri-italic"></i>
-    </button>
-    <button
-      class="btn btn-primary btn-group-sm outline toolbar"
-      @click="editor.chain().focus().toggleStrike().run()"
-      :class="{ 'is-active': editor.isActive('strike') }"
-    >
-      <i class="ri-strikethrough"></i>
-    </button>
-    <!-- <button
+      <button
+        class="btn btn-primary btn-group-sm outline toolbar"
+        @click="editor.chain().focus().toggleBold().run()"
+        :class="{ 'is-active': editor.isActive('bold') }"
+      >
+        <i class="ri-bold"></i>
+      </button>
+      <button
+        class="btn btn-primary btn-group-sm outline toolbar"
+        @click="editor.chain().focus().toggleItalic().run()"
+        :class="{ 'is-active': editor.isActive('italic') }"
+      >
+        <i class="ri-italic"></i>
+      </button>
+      <button
+        class="btn btn-primary btn-group-sm outline toolbar"
+        @click="editor.chain().focus().toggleStrike().run()"
+        :class="{ 'is-active': editor.isActive('strike') }"
+      >
+        <i class="ri-strikethrough"></i>
+      </button>
+      <!-- <button
       class="btn btn-primary btn-group-sm outline toolbar"
       @click="editor.chain().focus().toggleCode().run()"
       :class="{ 'is-active': editor.isActive('code') }"
     >
       code
     </button> -->
-    <!-- <button class="btn btn-primary btn-group-sm outline toolbar" @click="editor.chain().focus().unsetAllMarks().run()">
+      <!-- <button class="btn btn-primary btn-group-sm outline toolbar" @click="editor.chain().focus().unsetAllMarks().run()">
       clear marks
     </button>
     <button class="btn btn-primary btn-group-sm outline toolbar" @click="editor.chain().focus().clearNodes().run()">
       clear nodes
     </button> -->
-    <button
-      class="btn btn-primary btn-group-sm outline toolbar"
-      @click="editor.chain().focus().setParagraph().run()"
-      :class="{ 'is-active': editor.isActive('paragraph') }"
-    >
-      <i class="ri-paragraph"></i>
-    </button>
-    <button
-      class="btn btn-primary btn-group-sm outline toolbar"
-      @click="editor.chain().focus().toggleHeading({ level: 1 }).run()"
-      :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }"
-    >
-      <i class="ri-h-1"></i>
-    </button>
-    <button
-      class="btn btn-primary btn-group-sm outline toolbar"
-      @click="editor.chain().focus().toggleHeading({ level: 2 }).run()"
-      :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }"
-    >
-      <i class="ri-h-2"></i>
-    </button>
-    <button
-      class="btn btn-primary btn-group-sm outline toolbar"
-      @click="editor.chain().focus().toggleHeading({ level: 3 }).run()"
-      :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }"
-    >
-      <i class="ri-h-3"></i>
-    </button>
-    <button
-      class="btn btn-primary btn-group-sm outline toolbar"
-      @click="editor.chain().focus().toggleHeading({ level: 4 }).run()"
-      :class="{ 'is-active': editor.isActive('heading', { level: 4 }) }"
-    >
-      <i class="ri-h-4"></i>
-    </button>
-    <button
-      class="btn btn-primary btn-group-sm outline toolbar"
-      @click="editor.chain().focus().toggleHeading({ level: 5 }).run()"
-      :class="{ 'is-active': editor.isActive('heading', { level: 5 }) }"
-    >
-      <i class="ri-h-5"></i>
-    </button>
-    <button
-      class="btn btn-primary btn-group-sm outline toolbar"
-      @click="editor.chain().focus().toggleHeading({ level: 6 }).run()"
-      :class="{ 'is-active': editor.isActive('heading', { level: 6 }) }"
-    >
-      <i class="ri-h-6"></i>
-    </button>
-    <button
-      class="btn btn-primary btn-group-sm outline toolbar"
-      @click="editor.chain().focus().toggleBulletList().run()"
-      :class="{ 'is-active': editor.isActive('bulletList') }"
-    >
-      <i class="ri-list-unordered"></i>
-    </button>
-    <button
-      class="btn btn-primary btn-group-sm outline toolbar"
-      @click="editor.chain().focus().toggleOrderedList().run()"
-      :class="{ 'is-active': editor.isActive('orderedList') }"
-    >
-      <i class="ri-list-ordered"></i>
-    </button>
-    <!-- <button
+      <button
+        class="btn btn-primary btn-group-sm outline toolbar"
+        @click="editor.chain().focus().setParagraph().run()"
+        :class="{ 'is-active': editor.isActive('paragraph') }"
+      >
+        <i class="ri-paragraph"></i>
+      </button>
+      <button
+        class="btn btn-primary btn-group-sm outline toolbar"
+        @click="editor.chain().focus().toggleHeading({ level: 1 }).run()"
+        :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }"
+      >
+        <i class="ri-h-1"></i>
+      </button>
+      <button
+        class="btn btn-primary btn-group-sm outline toolbar"
+        @click="editor.chain().focus().toggleHeading({ level: 2 }).run()"
+        :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }"
+      >
+        <i class="ri-h-2"></i>
+      </button>
+      <button
+        class="btn btn-primary btn-group-sm outline toolbar"
+        @click="editor.chain().focus().toggleHeading({ level: 3 }).run()"
+        :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }"
+      >
+        <i class="ri-h-3"></i>
+      </button>
+      <button
+        class="btn btn-primary btn-group-sm outline toolbar"
+        @click="editor.chain().focus().toggleHeading({ level: 4 }).run()"
+        :class="{ 'is-active': editor.isActive('heading', { level: 4 }) }"
+      >
+        <i class="ri-h-4"></i>
+      </button>
+      <button
+        class="btn btn-primary btn-group-sm outline toolbar"
+        @click="editor.chain().focus().toggleHeading({ level: 5 }).run()"
+        :class="{ 'is-active': editor.isActive('heading', { level: 5 }) }"
+      >
+        <i class="ri-h-5"></i>
+      </button>
+      <button
+        class="btn btn-primary btn-group-sm outline toolbar"
+        @click="editor.chain().focus().toggleHeading({ level: 6 }).run()"
+        :class="{ 'is-active': editor.isActive('heading', { level: 6 }) }"
+      >
+        <i class="ri-h-6"></i>
+      </button>
+      <button
+        class="btn btn-primary btn-group-sm outline toolbar"
+        @click="editor.chain().focus().toggleBulletList().run()"
+        :class="{ 'is-active': editor.isActive('bulletList') }"
+      >
+        <i class="ri-list-unordered"></i>
+      </button>
+      <button
+        class="btn btn-primary btn-group-sm outline toolbar"
+        @click="editor.chain().focus().toggleOrderedList().run()"
+        :class="{ 'is-active': editor.isActive('orderedList') }"
+      >
+        <i class="ri-list-ordered"></i>
+      </button>
+      <!-- <button
       class="btn btn-primary btn-group-sm outline toolbar"
       @click="editor.chain().focus().toggleCodeBlock().run()"
       :class="{ 'is-active': editor.isActive('codeBlock') }"
     >
       code block
     </button> -->
-    <!-- <button
+      <!-- <button
       class="btn btn-primary btn-group-sm outline toolbar"
       @click="editor.chain().focus().toggleBlockquote().run()"
       :class="{ 'is-active': editor.isActive('blockquote') }"
     >
       blockquote
     </button> -->
-    <!-- <button class="btn btn-primary btn-group-sm outline toolbar" @click="editor.chain().focus().setHorizontalRule().run()">
+      <!-- <button class="btn btn-primary btn-group-sm outline toolbar" @click="editor.chain().focus().setHorizontalRule().run()">
       horizontal rule
     </button>
     <button class="btn btn-primary btn-group-sm outline toolbar" @click="editor.chain().focus().setHardBreak().run()">
       hard break
     </button> -->
-    <button class="btn btn-primary btn-group-sm outline toolbar" @click="editor.chain().focus().undo().run()">
-      <i class="ri-arrow-go-back-line"></i>
-    </button>
-    <button class="btn btn-primary btn-group-sm outline toolbar" @click="editor.chain().focus().redo().run()">
-      <i class="ri-arrow-go-forward-line"></i>
-    </button>
+      <button class="btn btn-primary btn-group-sm outline toolbar" @click="editor.chain().focus().undo().run()">
+        <i class="ri-arrow-go-back-line"></i>
+      </button>
+      <button class="btn btn-primary btn-group-sm outline toolbar" @click="editor.chain().focus().redo().run()">
+        <i class="ri-arrow-go-forward-line"></i>
+      </button>
     </div>
 
     <editor-content :editor="editor" />

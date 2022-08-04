@@ -38,7 +38,7 @@
         <p class="card-text">
           {{ prompt }}
         </p>
-        <input type="text" v-model="archetypeNumber" placeholder="how many characters?" />
+        <input type="text" v-model="promptNumber" placeholder="how many characters?" />
         <button class="btn btn-primary outline writers" v-on:click="showPrompt(promptNumber)">generate</button>
         <button class="btn btn-primary outline writers" v-on:click="clearPrompt()">clear</button>
       </div>

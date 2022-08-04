@@ -14,7 +14,7 @@
     </button>
     <dialog id="add-chapter-modal">
       <form method="dialog">
-        <label>Title</label>
+        <label>Title </label>
         <input type="text" v-model="title" />
         <button v-on:click="newChapter()" class="btn btn-primary outline">Add</button>
         <button class="btn btn-primary outline">Close</button>

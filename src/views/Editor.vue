@@ -1,5 +1,5 @@
 <template>
-  <div class="container editor">
+  <div class="container-fluid editor">
     <div class="row">
       <div class="col-md-3">
         <NewElements />
@@ -81,14 +81,14 @@ export default {
       axios.get("/chapters/" + this.selectedChapterId).then((response) => {
         console.log(response.data);
         chapter = response.data;
-        this.displayChapter = chapter.body;
+        this.displayChapter = chapter.json;
         console.log(this.displayChapter);
       });
     },
     updateChapter: function (chapter) {
       let params = {
         title: chapter.title,
-        body: this.displayChapter,
+        json: this.displayChapter,
       };
       axios.patch("/chapters/" + this.selectedChapterId, params).then((response) => {
         console.log(response.data);
