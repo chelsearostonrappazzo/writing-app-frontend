@@ -1,3 +1,8 @@
+#app {
+  background-color: #FFE6EE;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 .story {
   margin: 10px;
   width: 24rem;
@@ -21,9 +26,22 @@
 }
 
 .btn-primary.outline {
-  border: 1px pink solid;
+  border: 1px black solid;
   background: none;
   color: pink;
+}
+
+.btn-primary.outline.writers {
+  margin: 4px;
+}
+
+.btn-primary.outline.toolbar {
+  height: 36px;
+  width: 36px;
+}
+
+.editor-toolbar {
+  text-align: center;
 }
 
 .btn-primary.outline:hover,
@@ -55,3 +73,12 @@ a.list-group-item.active {
 /* a.list-group-item.character {
   margin: 1em;
 } */
+
+.nav-link.visited {
+  color: darkmagenta;
+}
+
+.navbar-brand {
+  margin-left: 16px;
+  font-size: 48px !important;
+}
